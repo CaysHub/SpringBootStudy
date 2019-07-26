@@ -3,6 +3,9 @@ package cays.spring.dao;
 import cays.spring.vo.Emp;
 import org.apache.ibatis.annotations.*;
 
+/**
+ * Mybatis实现数据库增、删、查、改
+ */
 public interface EmpDao {
 
     @Select("select * from emp where empno=#{empno}")

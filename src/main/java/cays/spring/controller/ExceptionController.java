@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
  **/
 @ControllerAdvice
 public class ExceptionController {
+    /**
+     * 全局错误处理机制
+     * @param e
+     * @return
+     */
     @ExceptionHandler(value = UserNotFoundException.class)
     public ResultVO handleUserNotFoundException(UserNotFoundException e) {
         return new ResultVO(e.getCode(), e.getData());

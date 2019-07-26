@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
  **/
 @ControllerAdvice
 public class MyHandleException {
+    /**
+     * 全局错误返回信息处理
+     * @param e
+     * @return
+     */
     @ResponseBody
     @ExceptionHandler(Exception.class)
     public ResultVO handleException(Exception e) {

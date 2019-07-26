@@ -2,7 +2,7 @@ package cays.spring.exception;
 
 /**
  * 用户没有找到异常类
- *
+ * 自定义异常处理类
  * @author Chai yansheng
  * @create 2019-07-24 17:57
  **/

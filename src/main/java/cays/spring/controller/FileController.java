@@ -22,6 +22,12 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/file")
 public class FileController {
+    /**
+     * 上传文件处理机制
+     * @param file
+     * @return
+     * @throws IOException
+     */
     @RequestMapping(value = "/upload", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResultVO uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
         File uploadFile = new File("D:\\WorkSpace\\file\\" + file.getOriginalFilename());
@@ -32,6 +38,11 @@ public class FileController {
         return new ResultVO("0", "上传成功");
     }
 
+    /**
+     * 下载文件处理机制
+     * @return
+     * @throws IOException
+     */
     @RequestMapping(value = "/download", method = RequestMethod.GET)
     public ResponseEntity<Object> downloadFile() throws IOException {
         String filename = "D:\\WorkSpace\\file\\3.jpg";

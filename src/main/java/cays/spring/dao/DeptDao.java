@@ -3,6 +3,9 @@ package cays.spring.dao;
 import cays.spring.vo.Dept;
 import org.apache.ibatis.annotations.*;
 
+/**
+ * Mybatis实现数据库增、删、查、改
+ */
 public interface DeptDao {
 
     @Select("select * from dept where deptno=#{deptno}")
