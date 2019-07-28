@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>前端界面</title>
+    <link rel="stylesheet" href="../../static/js/bootstrap.min.css">
+    <script src="../../static/js/jquery.min.js"></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
+</head>
+<style type="text/css">
+    body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+    }
+
+    .data_list {
+        border: 1px solid #E5E5E5;
+        padding: 10px;
+        background-color: #FDFDFD;
+        margin-top: 15px;
+    }
+
+    .data_list .data_list_title {
+        font-size: 15px;
+        font-weight: bold;
+        border-bottom: 1px solid #E5E5E5;
+        padding-bottom: 10px;
+        padding-top: 5px;
+    }
+
+    .data_list .data_list_title img {
+        vertical-align: top;
+    }
+</style>
+
+<body>
+<!--导航条浮动，固定在上方，不会随着滚动条滑下而消失-->
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <!--标题，字体稍微大点-->
+            <a class="navbar-brand" href="#">Cays</a>
+            <!--导航条具有响应式功能，主要是在屏幕较小的设备也能用-->
+        </div>
+        <div>
+            <!--导航标签，H5就有了-->
+            <ul class="nav navbar-nav navbar-left">
+                <li >
+                    <a href="#"><i class="glyphicon glyphicon-home"></i>&nbsp;主页</a>
+                </li>
+                <li >
+                    <a href="#"><i class="glyphicon glyphicon-pencil"></i>&nbsp;写博文</a>
+                </li>
+                <li>
+                    <a href="#"><i class="glyphicon glyphicon-book"></i>&nbsp;分类管理</a>
+                </li>
+                <li >
+                    <a href="#"><i class="glyphicon glyphicon-user"></i>&nbsp;个人中心</a>
+                </li>
+            </ul>
+            <!--导航条内的表单，居右-->
+            <form name="myForm" class="navbar-form navbar-right" method="post" action="">
+                <input class="span2" id="s_title" name="s_title" type="text" style="margin-top:5px;height:30px;" placeholder="文章标题">
+                <button type="submit" class="btn" onkeydown="if(event.keyCode==13) myForm.submit()"><i class="glyphicon glyphicon-search"></i>&nbsp;搜索</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <!--流式，按百分比分列-->
+    <div class="row-fluid">
+        <div class="span9">
+            <!--这里的内容经常会变化-->
+            <div class="data_list">
+                <div class="data_list_title">
+                    <span class="glyphicon glyphicon-th-list"> 最新资讯</span>
+                </div>
+            </div>
+        </div>
+        <div class="span3">
+            <div class="data_list">
+                <div class="data_list_title">
+                    <span class="glyphicon glyphicon-user"> 个人中心</span>
+                </div>
+            </div>
+
+            <div class="data_list">
+                <div class="data_list_title">
+                    <span class="glyphicon glyphicon-list-alt"> 按类别</span>
+                </div>
+            </div>
+
+            <div class="data_list">
+                <div class="data_list_title">
+                    <span class="glyphicon glyphicon-time"> 按日期</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
