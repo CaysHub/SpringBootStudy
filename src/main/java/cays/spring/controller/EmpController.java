@@ -41,7 +41,7 @@ public class EmpController {
     }
 
     @RequestMapping(value = "/user1", method = RequestMethod.GET)
-    void getUserNull() {
+    ResultVO getUserNull() {
         throw new UserNotFoundException("404", "未找到用户");
     }
 
