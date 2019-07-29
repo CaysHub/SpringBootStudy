@@ -5,6 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponseWrapper;
 import java.io.IOException;
 
 /**
@@ -14,7 +17,7 @@ import java.io.IOException;
  * @author Chai yansheng
  * @create 2019-07-25 11:16
  **/
-@Component
+//@Component
 public class MyHttpFilter implements Filter {
     private static final Logger LOGGER = LoggerFactory.getLogger(MyHttpFilter.class);
     @Override
@@ -26,7 +29,18 @@ public class MyHttpFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         LOGGER.info("Remote host:" + servletRequest.getRemoteHost());
         LOGGER.info("Remote address:" + servletRequest.getRemoteHost());
-        filterChain.doFilter(servletRequest, servletResponse);
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpServletResponseWrapper response = new HttpServletResponseWrapper((HttpServletResponse) servletResponse);
+        String path = request.getRequestURI();
+        LOGGER.info("old path:" + path);
+        if (path.indexOf("/api") < 0) {
+            path = "/api" +path;
+            LOGGER.info("new path:" + path);
+            request.getRequestDispatcher(path).forward(servletRequest, servletResponse);
+        } else {
+            LOGGER.info("path " + path + " already has /api.");
+            filterChain.doFilter(servletRequest, servletResponse);
+        }
     }
 
     @Override
