@@ -15,8 +15,8 @@ public interface EmpDao {
     int insertEmp(Emp emp);
 
     @UpdateProvider(type = EmpSqlProvider.class, method = "update")
-    int updateEmp(Emp emp);
+    int updateEmpByEmpno(Emp emp);
 
     @DeleteProvider(type = EmpSqlProvider.class, method = "delete2")
-    int deleteEmpByEmpno(String empno);
+    int deleteEmpByEmpnoByEmpno(String empno);
 }

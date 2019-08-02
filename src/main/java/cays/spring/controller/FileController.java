@@ -1,6 +1,8 @@
 package cays.spring.controller;
 
 import cays.spring.vo.ResultVO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -21,6 +23,7 @@ import java.io.IOException;
  **/
 @RestController
 @RequestMapping("/file")
+@Api(value = "文件上传下载接口")
 public class FileController {
     /**
      * 上传文件处理机制
@@ -29,6 +32,7 @@ public class FileController {
      * @throws IOException
      */
     @RequestMapping(value = "/upload", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @ApiOperation(value = "文件上传接口")
     public ResultVO uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
         File uploadFile = new File("D:\\WorkSpace\\file\\" + file.getOriginalFilename());
         uploadFile.createNewFile();
@@ -44,6 +48,7 @@ public class FileController {
      * @throws IOException
      */
     @RequestMapping(value = "/download", method = RequestMethod.GET)
+    @ApiOperation(value = "文件下载接口，暂无参数")
     public ResponseEntity<Object> downloadFile() throws IOException {
         String filename = "D:\\WorkSpace\\file\\3.jpg";
         File file = new File(filename);

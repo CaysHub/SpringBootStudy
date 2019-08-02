@@ -21,4 +21,16 @@ public class DeptService {
         return deptDao.findByDeptno(deptno);
     }
 
+    public int insertDept(Dept dept) {
+        return deptDao.insertDept(dept);
+    }
+
+    public int updateDeptByDeptno(Dept dept) {
+        return deptDao.updateDeptByDeptno(dept);
+    }
+
+    public int deleteDeptByDeptno(String deptno) {
+        return deptDao.deleteDeptByDeptnoByDeptno(deptno);
+    }
+
 }

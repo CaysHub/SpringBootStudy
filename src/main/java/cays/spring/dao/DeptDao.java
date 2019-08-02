@@ -11,10 +11,16 @@ public interface DeptDao {
     @Select("select * from dept where deptno=#{deptno}")
     Dept findByDeptno(@Param("deptno") String deptno);
 
+    @Insert("insert into dept (deptno, dname, loc) values (#{deptno}, #{dname}, #{loc})")
+    int insertDept(Dept dept);
+
     @Update("<script>update dept" +
-            "<set><if test='deptno != null'>dname=#{dname},</if>" +
+            "<set><if test='dname != null'>dname=#{dname},</if>" +
             "<if test='loc != null'>loc=#{loc}</if></set>" +
             "<where>deptno=#{deptno}</where>" +
             "</script>")
-    int updateDept(Dept dept);
+    int updateDeptByDeptno(Dept dept);
+
+    @Delete("delete dept where deptno=#{deptno}")
+    int deleteDeptByDeptnoByDeptno(@Param("deptno") String deptno);
 }

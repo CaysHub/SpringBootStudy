@@ -5,11 +5,10 @@ import cays.spring.service.EmpService;
 import cays.spring.vo.Emp;
 import cays.spring.vo.ResultVO;
 import cays.spring.vo.User;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
@@ -22,6 +21,7 @@ import java.io.IOException;
  **/
 @RestController
 @RequestMapping("/emp")
+@Api(value = "雇员信息接口")
 public class EmpController {
 
     @Autowired
@@ -30,22 +30,26 @@ public class EmpController {
     @Autowired
     private User user;
 
-    @RequestMapping(value = "/get/{empno}", method = RequestMethod.GET)
-    Emp getByEmpno(@PathVariable("empno") String empno) {
-        return empService.getByEmpno(empno);
+    @GetMapping(value = "/get/{empno}")
+    @ApiOperation(value = "根据雇员号获取雇员信息")
+    ResultVO getByEmpno(@PathVariable("empno") String empno) {
+        return new ResultVO("0", empService.getByEmpno(empno));
     }
 
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
-    User getUser() {
-        return user;
+    @GetMapping(value = "/user")
+    @ApiOperation(value = "获取用户，测试用")
+    ResultVO getUser() {
+        return new ResultVO("0", user);
     }
 
-    @RequestMapping(value = "/user1", method = RequestMethod.GET)
+    @GetMapping(value = "/user1")
+    @ApiOperation(value = "获取用户错误处理，测试用")
     ResultVO getUserNull() {
         throw new UserNotFoundException("404", "未找到用户");
     }
 
-    @RequestMapping(value = "/sendmail")
+    @GetMapping(value = "/sendmail")
+    @ApiOperation(value = "发送邮件，测试用")
     public ResultVO sendMail() throws IOException, MessagingException {
         empService.sendmail();
         return new ResultVO("0", "发送成功");

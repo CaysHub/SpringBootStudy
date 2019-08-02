@@ -26,6 +26,18 @@ public class EmpService {
         return empDao.fingByEmpno(empno);
     }
 
+    public int insertEmp(Emp emp) {
+        return empDao.insertEmp(emp);
+    }
+
+    public int updateEmpByEmpno(Emp emp) {
+        return empDao.updateEmpByEmpno(emp);
+    }
+
+    public int deleteEmpByEmpno(String empno) {
+        return empDao.deleteEmpByEmpnoByEmpno(empno);
+    }
+
     /**
      * 发送qq邮件
      * @throws AddressException
