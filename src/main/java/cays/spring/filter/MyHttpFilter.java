@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
@@ -24,8 +25,11 @@ public class MyHttpFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        LOGGER.info("Remote host:" + servletRequest.getRemoteHost());
-        LOGGER.info("Remote address:" + servletRequest.getRemoteHost());
+        LOGGER.debug("Remote host:" + servletRequest.getRemoteHost());
+        LOGGER.debug("Remote address:" + servletRequest.getRemoteHost());
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        String path = request.getRequestURI();
+        LOGGER.info("请求路径：" + path);
         filterChain.doFilter(servletRequest, servletResponse);
     }
 

@@ -6,13 +6,11 @@ import cays.spring.vo.Emp;
 import cays.spring.vo.ResultVO;
 import cays.spring.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * 用户信息控制器
@@ -30,22 +28,31 @@ public class EmpController {
     @Autowired
     private User user;
 
-    @RequestMapping(value = "/get/{empno}", method = RequestMethod.GET)
-    Emp getByEmpno(@PathVariable("empno") String empno) {
-        return empService.getByEmpno(empno);
+    @GetMapping(value = "/get/{empno}")
+    ResultVO getByEmpno(@PathVariable("empno") String empno) {
+        return new ResultVO("0", empService.getByEmpno(empno));
+    }
+    @GetMapping(value = "/list")
+    List<Emp> listEmp() {
+        return empService.getAllEmp();
     }
 
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
+
+
+
+
+
+    @GetMapping(value = "/user")
     User getUser() {
         return user;
     }
 
-    @RequestMapping(value = "/user1", method = RequestMethod.GET)
+    @GetMapping(value = "/user1")
     void getUserNull() {
         throw new UserNotFoundException("404", "未找到用户");
     }
 
-    @RequestMapping(value = "/sendmail")
+    @GetMapping(value = "/sendmail")
     public ResultVO sendMail() throws IOException, MessagingException {
         empService.sendmail();
         return new ResultVO("0", "发送成功");

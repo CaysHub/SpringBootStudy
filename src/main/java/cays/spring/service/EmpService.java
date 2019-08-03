@@ -9,6 +9,7 @@ import javax.mail.*;
 import javax.mail.internet.*;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -22,8 +23,21 @@ public class EmpService {
     @Resource
     private EmpDao empDao;
 
+    /**
+     * 根据雇员号获取雇员信息
+     * @param empno
+     * @return
+     */
     public Emp getByEmpno(String empno) {
         return empDao.fingByEmpno(empno);
+    }
+
+    /**
+     * 获取所有雇员信息
+     * @return
+     */
+    public List<Emp> getAllEmp() {
+        return empDao.findAllEmp();
     }
 
     /**
