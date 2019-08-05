@@ -6,10 +6,14 @@ import org.apache.ibatis.annotations.*;
 /**
  * Mybatis实现数据库增、删、查、改
  */
+import java.util.List;
 public interface EmpDao {
 
     @Select("select * from emp where empno=#{empno}")
     Emp fingByEmpno(@Param("empno") String empno);
+
+    @Select("select * from emp")
+    List<Emp> findAllEmp();
 
     @InsertProvider(type = EmpSqlProvider.class, method = "insert")
     int insertEmp(Emp emp);

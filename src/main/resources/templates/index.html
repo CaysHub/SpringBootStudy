@@ -4,9 +4,57 @@
     <meta charset="UTF-8">
     <link href="css/style.css" rel="stylesheet" />
     <title>Hello</title>
+    <link rel="stylesheet" href="js/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-<h4>SpringBoot学习项目界面</h4>
-<p>天下熙攘，江湖路远</p>
+<div class="container">
+    <h4>SpringBoot学习项目界面</h4>
+    <button class="btn btn-primary btn-lg" style="background: rgba(183,183,183,0.51);border: rgba(183,183,183,0.51)">
+        <span class="glyphicon glyphicon-home"><a href="/home"> Home</a></span>
+    </button>
+    <button class="btn btn-primary btn-lg" style="background: rgba(183,183,183,0.51);border: rgba(183,183,183,0.51)">
+        <span class="glyphicon glyphicon-user"><a href="/login"> Login</a></span>
+    </button>
+    <button class="btn btn-primary btn-lg" style="background: rgba(183,183,183,0.51);border: rgba(183,183,183,0.51)">
+        <span class="glyphicon glyphicon-list"><a href="/manager"> Manager</a></span>
+    </button>
+    <p>天下熙攘，江湖路远</p>
+    <div id="myDiv"><h2>通过 AJAX 改变文本</h2></div>
+    <button id="b01" type="button" style="background: rgba(183,183,183,0.51);border: rgba(183,183,183,0.51)">改变内容</button>
+
+    <footer class="text-center">
+        <p>Copyright &copy; 2018 Company Name | Designed by
+            <a href="http://www.baidu.com" target="_parent">Cays</a>
+        </p>
+    </footer>
+</div>
 </body>
+<script type="text/javascript">
+    $('#b01').click(function(){
+        //alert("触发请求")
+        $.ajax({
+            url:'/emp/list',//地址
+            dataType:'json',//数据类型
+            data:null,//数据
+            type:'GET',//类型
+            timeout:2000,//超时
+            //请求成功
+            success:function(data,status){
+                $('#myDiv').html(data.data[0].ename);
+            },
+            //失败/超时
+            error:function(XMLHttpRequest,textStatus,errorThrown){
+                if(textStatus==='timeout'){
+                    alert('请求超时');
+                    setTimeout(function(){
+                        alert('重新请求');
+                    },2000);
+                }
+                //alert(errorThrown);
+            }
+        })
+    })
+</script>
 </html>

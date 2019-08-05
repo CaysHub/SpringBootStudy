@@ -47,16 +47,17 @@ public class EmpServiceInterceptor implements HandlerInterceptor {
         }
         // 如果session里有user，表示该用户已经登陆，放行，用户即可继续调用自己需要的接口
         LOGGER.info("The emp has logined.");
+        LOGGER.debug("Pre handle method is calling");
         return true;
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        LOGGER.info("Post handle method is calling");
+        LOGGER.debug("Post handle method is calling");
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        LOGGER.info("After handle method is calling");
+        //LOGGER.info("After handle method is calling");
     }
 }

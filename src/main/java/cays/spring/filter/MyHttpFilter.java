@@ -2,7 +2,6 @@ package cays.spring.filter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -41,6 +40,12 @@ public class MyHttpFilter implements Filter {
             LOGGER.info("path " + path + " already has /api.");
             filterChain.doFilter(servletRequest, servletResponse);
         }
+        LOGGER.debug("Remote host:" + servletRequest.getRemoteHost());
+        LOGGER.debug("Remote address:" + servletRequest.getRemoteHost());
+        //HttpServletRequest request = (HttpServletRequest) servletRequest;
+        //String path = request.getRequestURI();
+        LOGGER.info("请求路径：" + path);
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override

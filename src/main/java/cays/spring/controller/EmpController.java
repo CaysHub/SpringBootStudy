@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * 用户信息控制器
@@ -35,6 +36,15 @@ public class EmpController {
     ResultVO getByEmpno(@PathVariable("empno") String empno) {
         return new ResultVO("0", empService.getByEmpno(empno));
     }
+    @GetMapping(value = "/list")
+    List<Emp> listEmp() {
+        return empService.getAllEmp();
+    }
+
+
+
+
+
 
     @GetMapping(value = "/user")
     @ApiOperation(value = "获取用户，测试用")
@@ -44,7 +54,7 @@ public class EmpController {
 
     @GetMapping(value = "/user1")
     @ApiOperation(value = "获取用户错误处理，测试用")
-    ResultVO getUserNull() {
+    ResultVO getUser1() {
         throw new UserNotFoundException("404", "未找到用户");
     }
 
