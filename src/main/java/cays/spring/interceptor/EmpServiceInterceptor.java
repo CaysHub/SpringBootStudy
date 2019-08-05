@@ -33,7 +33,7 @@ public class EmpServiceInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        LOGGER.info("Pre handle method is calling");
+        /*LOGGER.info("Pre handle method is calling");
         // 每一个项目对于登陆的实现逻辑都有所区别，我这里使用最简单的Session提取User来验证登陆
         HttpSession session = request.getSession();
         // 这里的User是登陆时放入session的
@@ -47,13 +47,13 @@ public class EmpServiceInterceptor implements HandlerInterceptor {
         }
         // 如果session里有user，表示该用户已经登陆，放行，用户即可继续调用自己需要的接口
         LOGGER.info("The emp has logined.");
-        LOGGER.debug("Pre handle method is calling");
+        LOGGER.debug("Pre handle method is calling");*/
         return true;
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        LOGGER.debug("Post handle method is calling");
+        //LOGGER.debug("Post handle method is calling");
     }
 
     @Override

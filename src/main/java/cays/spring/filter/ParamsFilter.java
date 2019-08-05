@@ -13,6 +13,7 @@ import java.io.IOException;
 
 /**
  * 请求的空格过滤器
+ * 过滤参数的前后空格的过滤器
  *
  * @author Chai yansheng
  * @create 2019-07-29 11:28
@@ -27,16 +28,16 @@ public class ParamsFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-
-        ParameterRequestWrapper request = new ParameterRequestWrapper((HttpServletRequest) servletRequest);
+        LOGGER.debug("过滤参数的前后空格的过滤器");
+        /*ParameterRequestWrapper request = new ParameterRequestWrapper((HttpServletRequest) servletRequest);
         HttpSession session = request.getSession();
         LOGGER.info("session id:" + session.getId());
         if (session.getAttribute("name") == null) {
             session.setAttribute("name", "cays");
         } else {
             LOGGER.info("name:" + session.getAttribute("name"));
-        }
-        filterChain.doFilter(request, servletResponse);
+        }*/
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override
