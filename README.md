@@ -1,2 +1,2 @@
 # SpringBootStudy
-springboot学习，各种内容合并，参考易百的SpringBoot教程尝试写的代码，没有前端
+springboot学习，各种内容合并，参考很多的SpringBoot教程尝试写的代码，前端就是后台管理界面bootstrap和bootstrap-table做界面，jquery的ajax访问后台数据。
